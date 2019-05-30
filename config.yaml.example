@@ -1,0 +1,6 @@
+interval: 60s
+targets:
+  - type: log
+  - type: cloudwatch
+  - type: url
+    arg: http://localhost:8080/heartbeat
