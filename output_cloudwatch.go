@@ -63,11 +63,11 @@ func initCloudwatch(hostMetrics *HostMetrics, namespace string) *CloudwatchInfo 
 
 	// The beacon metrics dimensions are only the HostID and Hostname
 	dimensions := []cloudwatch.Dimension{
-		cloudwatch.Dimension{
+		{
 			Name:  aws.String("HostID"),
 			Value: aws.String(hostMetrics.HostID),
 		},
-		cloudwatch.Dimension{
+		{
 			Name:  aws.String("Hostname"),
 			Value: aws.String(hostMetrics.Hostname),
 		},
