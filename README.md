@@ -27,6 +27,10 @@ $ beacon
 ...
 ```
 
+### Cloutwatch example
+
+[![Cloudwatch Dashboard](assets/cloudwatch.png)](assets/cloudwatch.png)
+
 ### Configuration
 
 * `interval`: the interval in seconds at which metrics are sampled and sent.
