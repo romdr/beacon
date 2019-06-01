@@ -3,7 +3,7 @@
 package=beacon
 platforms=("windows/amd64" "linux/amd64" "darwin/amd64")
 ldflags="-s -w"
-version="v1.0.0"
+version="v1.1.0"
 
 for platform in "${platforms[@]}"
 do
@@ -22,6 +22,6 @@ do
         exit 1
     fi
 
-    cp -f {LICENSE,README.md} bin/$folder_name/
+    cp -f {LICENSE,README.md,config.yml.example} bin/$folder_name/
     tar -czf bin/$folder_name.tgz -C bin $folder_name
 done

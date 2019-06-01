@@ -1,7 +1,9 @@
 package main
 
 import (
+	"flag"
 	"log"
+	"runtime"
 	"time"
 
 	"github.com/shirou/gopsutil/cpu"
@@ -64,9 +66,22 @@ func sendMetrics(hostMetrics *HostMetrics, config *Config) {
 }
 
 func main() {
+	// Parse arguments
+	var configPath string
+	flag.StringVar(&configPath, "config", "", "Path to the configuration file")
+	flag.Parse()
+
+	if len(configPath) == 0 {
+		if runtime.GOOS == "linux" || runtime.GOOS == "darwin" {
+			configPath = "/etc/beacon/config.yml"
+		} else {
+			configPath = "config.yml"
+		}
+	}
+
 	// Load the configuration
 	var config Config
-	config.load()
+	config.load(configPath)
 
 	// Start the periodic heartbeat
 	doEvery(config.Interval, heartbeat, &config)

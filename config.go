@@ -18,8 +18,8 @@ type Config struct {
 }
 
 // Load the yaml config file
-func (config *Config) load() {
-	yamlFile, err := ioutil.ReadFile("config.yaml")
+func (config *Config) load(path string) {
+	yamlFile, err := ioutil.ReadFile(path)
 	if err != nil {
 		log.Fatalf("ERROR: Reading config file: %s", err)
 	}

@@ -27,12 +27,24 @@ $ beacon
 ...
 ```
 
+```
+$ beacon --help
+Usage of /usr/local/bin/beacon:
+  -config string
+        Path to the configuration file
+```
+
 ### Cloutwatch example
 
 [![Cloudwatch Dashboard](assets/cloudwatch.png)](assets/cloudwatch.png)
 
 ### Configuration
 
+The default configuration file path is:
+* `/etc/beacon/config.yml` on Linux and OSX
+* `./` on Windows (the current directory from which beacon.exe is invoked)
+
+Config.yml reference:
 * `interval`: the interval in seconds at which metrics are sampled and sent.
 
 * `targets`: one or more targets to send metrics to. Possible `type` values are `log`, `cloudwatch`, `url`.
@@ -52,6 +64,20 @@ Built binaries are available in [Releases](../../releases), for the following pl
 * Linux/amd64
 * OSX/amd64
 * Windows/amd64
+
+You can use the script below to download, install, and configure a version of your choice (edit the first line with your preferences):
+
+```
+BEACON_VERSION=v1.1.0 BEACON_OS=linux BEACON_ARCH=amd64 BINARY_DEST=/usr/local/bin CONFIG_DEST=/etc/beacon ; \
+  wget https://github.com/shazbits/beacon/releases/download/$BEACON_VERSION/beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION.tgz \
+  && tar xzf beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION.tgz \
+  && chmod +x beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION/beacon \
+  && sudo mkdir -p $CONFIG_DEST \
+  && sudo cp -t $BINARY_DEST beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION/beacon \
+  && sudo cp beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION/config.yaml.example $CONFIG_DEST/config.yml \
+  && echo Configuration file: $CONFIG_DEST \
+  && vi $CONFIG_DEST/config.yml
+```
 
 ### From source
 
