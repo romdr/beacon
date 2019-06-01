@@ -74,7 +74,7 @@ BEACON_VERSION=v1.1.0 BEACON_OS=linux BEACON_ARCH=amd64 BINARY_DEST=/usr/local/b
   && chmod +x beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION/beacon \
   && sudo mkdir -p $CONFIG_DEST \
   && sudo cp -t $BINARY_DEST beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION/beacon \
-  && sudo cp beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION/config.yaml.example $CONFIG_DEST/config.yml \
+  && sudo cp beacon-$BEACON_OS-$BEACON_ARCH-$BEACON_VERSION/config.yml.example $CONFIG_DEST/config.yml \
   && echo Configuration file: $CONFIG_DEST \
   && vi $CONFIG_DEST/config.yml
 ```
