@@ -89,6 +89,19 @@ $ go build
 $ ./build.sh
 ```
 
+### Arch Linux AUR package
+
+[Package information](https://aur.archlinux.org/packages/beacon/)
+
+```
+$ yay -S beacon
+$ vi /etc/beacon/config.yml
+$ sudo systemctl enable beacon
+$ sudo systemctl start beacon
+```
+
+This method allow beacon to be setup as a systemd service, start on boot after the network is ready, auto restart on failure, and make logs visible with `sudo journalctl -u beacon`.
+
 ## License
 
 [MIT License](https://github.com/shazbits/beacon/blob/master/LICENSE)
